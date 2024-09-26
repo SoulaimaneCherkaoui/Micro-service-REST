@@ -6,6 +6,7 @@ import com.example.bank_account_service.entities.BankAccount;
 import com.example.bank_account_service.mappers.AccountMapper;
 import com.example.bank_account_service.repositories.BankAccountRepository;
 import com.example.bank_account_service.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -16,7 +17,9 @@ import java.util.UUID;
 @RequestMapping("/api")
 public class AccountRestController {
     private BankAccountRepository bankAccountRepository;
+    @Autowired
     private AccountService accountService;
+    @Autowired
     private AccountMapper accountMapper;
     public AccountRestController(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;

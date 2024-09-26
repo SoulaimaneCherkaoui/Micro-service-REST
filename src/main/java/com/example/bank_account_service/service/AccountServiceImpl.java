@@ -18,10 +18,12 @@ import java.util.UUID;
 public class AccountServiceImpl implements AccountService {
     @Autowired
     BankAccountRepository accountRepository;
+    @Autowired
     private AccountMapper accountMapper;
     @Override
     public BankAccountResponseDTO addAccount(BankAccountRequestDTO bankAccountDTO) {
         BankAccount bankAccount = accountMapper.toBankAccount(bankAccountDTO);
+        bankAccount.setId(UUID.randomUUID().toString());
         BankAccount savedBankAccount = accountRepository.save(bankAccount);
      BankAccountResponseDTO bankAccountResponseDTO = accountMapper.fromBankAccount(savedBankAccount);
         return bankAccountResponseDTO;
